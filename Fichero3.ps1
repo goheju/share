@@ -5,7 +5,8 @@
     Write-Host "3. Ejecuta y muestra informacion sobre Get-NetIPConfiguration "
     Write-Host "4. Ejcuta Get-NetConnectionProfile "
     Write-Host "5. Muestra la ruta que usan los paquetes  "
-    Write-Host "6. Mostrar y exportar informacion del equipo " 
+    Write-Host "6. Muestra informacion detallada de cada adaptador (Nombre, Estado, Velocidad e identificador VLAN si tuviera) " 
+
     Write-Host "7. Salir " 
     $x=Read-Host "Seleccionar opcion"
 if ($x -eq 1 )
@@ -34,8 +35,7 @@ if ($x -eq 5 )
 }
 if ($x -eq 6 )
 {
-    Get-ComputerInfo
-    Get-ComputerInfo|Out-File c:\info.txt
+    Get-NetAdapter | Select-Object Name, Status, linkspeed, VlanID
 }
 if ($x -eq 7 )
 {
