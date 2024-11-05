@@ -78,7 +78,7 @@ if ($x -eq 13 )
 }
 if ($x -eq 14 )
 {
-    Test-NetConnection
+    Get-NetAdapter | Select-Object Name, MacAddress
 }
 if ($x -eq 15 )
 {
