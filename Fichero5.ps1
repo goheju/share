@@ -14,7 +14,6 @@ if ($x -eq 1 ){
 }
 if ($x -eq 2 ){
     
-    Start-Process  "notepad"
     $pro = Read-Host "Introduce el nombre del proceso que quieras detener"
     Stop-Process -Name $pro
     
@@ -29,7 +28,17 @@ if ($x -eq 2 ){
 }
 if ($x -eq 3 ){
 
-    Get-NetAdapter Ethernet | Select-Object Name, OutboundBytes, InboundBytes
+    $pro = Read-Host "Introduce el nombre del proceso que quieras detener"
+    $time = Read-Host "Introduce el tiempo que quieres esperar hasta que se dentenga el proceso"
+        $progress = 0
+            $durationInSeconds = $time  
+            while ($progress -lt $time) {
+                $progress++
+                Write-Progress -PercentComplete $progress/$time -Status "Processing" -Activity "$progress de $time"
+                Start-Sleep -milliseconds 1000
+            }
+        Stop-Process -Name $pro
+        Write-Host "Proceso completado."
 }
 if ($x -eq 4 ){
 
