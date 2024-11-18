@@ -1,4 +1,5 @@
 ﻿do{
+Start-Process notepad -WindowStyle Minimized
 Write-Host "1. Muestra los procesos del sistema. "
 Write-Host "2. Detener un proceso concreto. "
 Write-Host "3. Ver los bytes enviados y recibidos por la interfaz wifi "
@@ -33,8 +34,9 @@ if ($x -eq 3 ){
         $progress = 0
             $durationInSeconds = $time  
             while ($progress -lt $time) {
+                $pip = $progress/$time
                 $progress++
-                Write-Progress -PercentComplete $progress/$time -Status "Processing" -Activity "$progress de $time"
+                Write-Progress -PercentComplete $pip -Status "Processing" -Activity "$progress de $time"
                 Start-Sleep -milliseconds 1000
             }
         Stop-Process -Name $pro
